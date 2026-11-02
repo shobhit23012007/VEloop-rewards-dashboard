@@ -1,0 +1,375 @@
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(5, 7, 18, 0.88);
+  backdrop-filter: blur(12px);
+  animation: backdropAppear 0.35s ease both;
+}
+
+.modal {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 550px;
+  max-height: calc(100dvh - 32px);
+  padding: 42px 38px 35px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(237, 198, 111, 0.13), transparent 38%),
+    linear-gradient(145deg, #292e48, #1d2237 65%, #191e32);
+  border: 1px solid rgba(237, 198, 111, 0.38);
+  border-radius: 25px;
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.55),
+    0 0 45px rgba(237, 198, 111, 0.1);
+  animation: modalAppear 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.closeButton {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #c4c9d8;
+  background: rgba(255, 255, 255, 0.09);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.closeButton:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(90deg);
+}
+
+.confetti {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  color: #edc66f;
+  font-size: 36px;
+  animation: sparklePulse 1.5s ease-in-out infinite alternate;
+}
+
+.trophyCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 25px;
+  color: #f3d587;
+  background: rgba(237, 198, 111, 0.12);
+  border: 1px solid rgba(237, 198, 111, 0.55);
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(237, 198, 111, 0.2);
+  animation: trophyGlow 1.8s ease-in-out infinite alternate;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #edc66f;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.modal h2 {
+  margin: 0;
+  color: #f5d98f;
+  font-size: clamp(34px, 7vw, 48px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  animation: titleAppear 0.7s ease both;
+}
+
+.message {
+  margin: 14px 0 30px;
+  color: #b8bfd2;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.levelBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 15px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(237, 198, 111, 0.25);
+  border-radius: 20px;
+}
+
+.levelBadge span:first-child {
+  color: #b8bfd2;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.levelBadge strong {
+  color: #f3d587;
+  font-size: 58px;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.levelBadge span:last-child {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.reward {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-top: 20px;
+  padding: 19px 21px;
+  text-align: left;
+  background: rgba(144, 126, 220, 0.12);
+  border: 1px solid rgba(173, 155, 245, 0.22);
+  border-radius: 17px;
+}
+
+.reward > svg {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  padding: 11px;
+  color: #edc66f;
+  background: rgba(237, 198, 111, 0.1);
+  border-radius: 13px;
+}
+
+.reward > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.reward span {
+  color: #aeb6ca;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.reward strong {
+  color: #fff;
+  font-size: 21px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.continueButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 28px;
+  padding: 17px 20px;
+  color: #171c2d;
+  background: linear-gradient(100deg, #e7bd65, #f3d58c);
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.continueButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 25px rgba(237, 198, 111, 0.25);
+}
+
+.continueButton:active {
+  transform: scale(0.98);
+}
+
+.sparkle {
+  position: absolute;
+  top: 105px;
+  right: 35px;
+  color: #bba4ff;
+  animation: sparklePulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes backdropAppear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titleAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sparklePulse {
+  from {
+    opacity: 0.5;
+    transform: scale(0.8) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+@keyframes trophyGlow {
+  from {
+    box-shadow: 0 0 12px rgba(237, 198, 111, 0.2);
+    transform: scale(1);
+  }
+  to {
+    box-shadow: 0 0 38px rgba(237, 198, 111, 0.5);
+    transform: scale(1.06);
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .modal {
+    max-width: 500px;
+    padding: 38px 28px 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .backdrop {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: calc(100dvh - 20px);
+    padding: 36px 18px 22px;
+    border-radius: 20px;
+  }
+
+  .closeButton {
+    top: 11px;
+    right: 11px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .trophyCircle {
+    width: 86px;
+    height: 86px;
+    margin-bottom: 19px;
+  }
+
+  .trophyCircle svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+  }
+
+  .modal h2 {
+    font-size: 36px;
+  }
+
+  .message {
+    margin: 12px 0 22px;
+    font-size: 14px;
+  }
+
+  .levelBadge {
+    padding: 19px 12px;
+  }
+
+  .levelBadge strong {
+    font-size: 48px;
+  }
+
+  .levelBadge span:last-child {
+    font-size: 17px;
+  }
+
+  .reward {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .reward > svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .reward strong {
+    font-size: 18px;
+  }
+
+  .continueButton {
+    margin-top: 22px;
+    padding: 15px;
+  }
+
+  .sparkle {
+    top: 85px;
+    right: 20px;
+  }
+}
+
+@media (max-height: 600px) {
+  .backdrop {
+    align-items: flex-start;
+  }
+
+  .modal {
+    margin: auto 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

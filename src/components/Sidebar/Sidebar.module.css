@@ -1,0 +1,649 @@
+/* =========================================
+   SIDEBAR MAIN
+========================================= */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 265px;
+  min-width: 265px;
+  height: 100vh;
+
+  padding: 28px 18px 20px;
+
+  color: #f5f5fa;
+  background: #111321;
+
+  border-right: 1px solid #292c42;
+
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #45495f #111321;
+
+  transition:
+    width 0.25s ease,
+    min-width 0.25s ease,
+    padding 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* =========================================
+   CUSTOM DARK SCROLLBAR
+========================================= */
+
+.sidebar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #111321;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #45495f;
+  border: 1px solid #111321;
+  border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #747991;
+}
+
+.sidebar::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  min-height: 68px;
+
+  padding: 4px 10px 32px;
+
+  border-bottom: 1px solid #292c42;
+  box-sizing: border-box;
+}
+
+.brandIcon {
+  display: grid;
+  place-items: center;
+
+  width: 47px;
+  height: 47px;
+  min-width: 47px;
+
+  padding: 0;
+
+  color: #eac56d;
+
+  background: linear-gradient(
+    145deg,
+    #463a25,
+    #29243a
+  );
+
+  border: 1px solid rgba(234, 197, 109, 0.4);
+  border-radius: 15px;
+
+  box-sizing: border-box;
+}
+
+.brandIcon:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+/* Trophy clickable in collapsed mode */
+
+.sidebar.collapsed .brandIcon {
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.sidebar.collapsed .brandIcon:hover {
+  background: linear-gradient(
+    145deg,
+    #59492d,
+    #39304e
+  );
+
+  border-color: #eac56d;
+  transform: scale(1.04);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  min-width: 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.brandText strong {
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+
+.brandText span {
+  color: #eac56d;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+/* =========================================
+   COLLAPSE BUTTON
+========================================= */
+
+.collapseButton {
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+
+  margin-left: auto;
+  padding: 0;
+
+  color: #aeb6cc;
+  background: #202338;
+
+  border: 1px solid #343950;
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.collapseButton:hover {
+  color: #eac56d;
+  background: #2b2e43;
+  border-color: #eac56d;
+}
+
+/* =========================================
+   NAVIGATION SECTION
+========================================= */
+
+.navSection {
+  margin-top: 30px;
+}
+
+.sectionLabel {
+  margin: 0 0 13px 12px;
+
+  color: #777e99;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+
+  white-space: nowrap;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+/* =========================================
+   NAVIGATION BUTTONS
+========================================= */
+
+.navItem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 49px;
+
+  padding: 0 13px;
+
+  color: #aeb6cc;
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  box-sizing: border-box;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.navItem svg {
+  display: block;
+
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+
+  flex-shrink: 0;
+
+  color: #a5acc5;
+}
+
+.navText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Clickable menu hover */
+
+.navItem:hover {
+  color: #ffffff;
+  background: #202238;
+  cursor: pointer;
+}
+
+.navItem:hover svg {
+  color: #eac56d;
+}
+
+/* Active navigation */
+
+.navItem.active {
+  color: #ffffff;
+
+  background: linear-gradient(
+    100deg,
+    rgba(119, 79, 220, 0.24),
+    rgba(119, 79, 220, 0.08)
+  );
+
+  border-color: rgba(158, 119, 255, 0.35);
+
+  box-shadow: 0 5px 18px rgba(93, 60, 170, 0.12);
+}
+
+.navItem.active svg {
+  color: #c19aff;
+}
+
+.activeIndicator {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+
+  margin-left: auto;
+
+  background: #bd8aff;
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px #bd8aff;
+}
+
+/* =========================================
+   ACCOUNT SECTION
+========================================= */
+
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  margin-top: 35px;
+  padding-top: 22px;
+
+  border-top: 1px solid #292c42;
+}
+
+/* =========================================
+   ACCOUNT ITEMS
+========================================= */
+
+.accountItem {
+  color: #aeb6cc;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.accountItem:hover {
+  color: #ffffff;
+  background: #202238;
+  border-color: transparent;
+
+  cursor: pointer;
+}
+
+.accountItem:hover svg {
+  color: #eac56d;
+}
+
+.accountItem:active {
+  background: #292d45;
+}
+
+/* =========================================
+   SIDEBAR FOOTER
+========================================= */
+
+.sidebarFooter {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-top: auto;
+  padding: 15px 12px;
+
+  background: linear-gradient(
+    145deg,
+    #29253b,
+    #202337
+  );
+
+  border: 1px solid rgba(234, 197, 109, 0.2);
+  border-radius: 13px;
+
+  box-sizing: border-box;
+}
+
+.footerIcon {
+  display: grid;
+  place-items: center;
+
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+
+  color: #eac56d;
+  background: rgba(234, 197, 109, 0.12);
+
+  border-radius: 9px;
+}
+
+.footerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.footerText strong {
+  color: #f5d88e;
+  font-size: 11px;
+}
+
+.footerText p {
+  margin: 5px 0 0;
+
+  color: #aeb6cc;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.footerArrow {
+  margin-top: 7px;
+  flex-shrink: 0;
+
+  color: #aeb6cc;
+}
+
+/* =========================================
+   COLLAPSED SIDEBAR
+========================================= */
+
+.sidebar.collapsed {
+  width: 80px;
+  min-width: 80px;
+
+  padding: 28px 10px 20px;
+}
+
+/* Collapsed brand */
+
+.sidebar.collapsed .brand {
+  justify-content: center;
+  padding: 4px 0 32px;
+}
+
+.sidebar.collapsed .brandText {
+  display: none;
+}
+
+.sidebar.collapsed .collapseButton {
+  display: none;
+}
+
+/* Hide labels */
+
+.sidebar.collapsed .sectionLabel,
+.sidebar.collapsed .navText,
+.sidebar.collapsed .footerText,
+.sidebar.collapsed .footerArrow {
+  display: none;
+}
+
+/* Center icons */
+
+.sidebar.collapsed .navItem {
+  justify-content: center;
+  gap: 0;
+
+  width: 100%;
+  min-height: 49px;
+
+  padding: 0;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+}
+
+.sidebar.collapsed .navItem svg {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+/* Active indicator */
+
+.sidebar.collapsed .activeIndicator {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+
+  margin: 0;
+
+  transform: translateY(-50%);
+}
+
+/* Footer */
+
+.sidebar.collapsed .sidebarFooter {
+  justify-content: center;
+  padding: 12px 5px;
+}
+
+.sidebar.collapsed .footerIcon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+}
+
+/* =========================================
+   MOBILE CONTROLS
+========================================= */
+
+.mobileToggle,
+.mobileBackdrop {
+  display: none;
+}
+
+/* =========================================
+   MOBILE AND TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .sidebar,
+  .sidebar.collapsed {
+    width: 265px;
+    min-width: 265px;
+
+    padding: 28px 18px 20px;
+
+    transform: translateX(-100%);
+  }
+
+  .sidebar.sidebarOpen {
+    transform: translateX(0);
+  }
+
+  /* Mobile menu button */
+
+  .mobileToggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 102;
+
+    display: grid;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+
+    color: #eac56d;
+    background: #25283b;
+
+    border: 1px solid #49435a;
+    border-radius: 11px;
+
+    cursor: pointer;
+  }
+
+  /* Mobile backdrop */
+
+  .mobileBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+
+    display: block;
+
+    background: rgba(5, 7, 15, 0.65);
+
+    border: 0;
+    padding: 0;
+  }
+
+  /* Restore brand */
+
+  .sidebar.collapsed .brand {
+    justify-content: flex-start;
+    padding: 4px 10px 32px;
+  }
+
+  .sidebar.collapsed .brandText {
+    display: flex;
+  }
+
+  .sidebar.collapsed .collapseButton {
+    display: none;
+  }
+
+  /* Restore labels */
+
+  .sidebar.collapsed .sectionLabel {
+    display: block;
+  }
+
+  .sidebar.collapsed .navText {
+    display: inline;
+  }
+
+  .sidebar.collapsed .footerText {
+    display: block;
+  }
+
+  .sidebar.collapsed .footerArrow {
+    display: block;
+  }
+
+  /* Restore full navigation */
+
+  .sidebar.collapsed .navItem {
+    justify-content: flex-start;
+    gap: 13px;
+
+    padding: 0 13px;
+  }
+
+  .sidebar.collapsed .activeIndicator {
+    position: static;
+
+    margin-left: auto;
+
+    transform: none;
+  }
+
+  /* Restore footer */
+
+  .sidebar.collapsed .sidebarFooter {
+    justify-content: flex-start;
+    padding: 15px 12px;
+  }
+
+  .sidebar.collapsed .footerIcon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .navItem,
+  .collapseButton,
+  .brandIcon {
+    transition: none;
+  }
+}

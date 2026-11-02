@@ -1,0 +1,22 @@
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  isolation: isolate;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  margin-inline: auto;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    overflow-x: clip;
+  }
+}

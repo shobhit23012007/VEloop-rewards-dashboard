@@ -1,0 +1,308 @@
+
+.rewardSection {
+  padding: 30px;
+  margin-top: 35px;
+  color: #ffffff;
+  background: #202438;
+  border: 1px solid #343a52;
+  border-radius: 24px;
+}
+
+/* Heading */
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin-bottom: 9px;
+  color: #edc66f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.heading h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 9px 0 0;
+  color: #aeb8d0;
+  font-size: 14px;
+}
+
+.headingIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  color: #edc66f;
+  background: rgba(237, 198, 111, 0.12);
+  border: 1px solid rgba(237, 198, 111, 0.25);
+  border-radius: 16px;
+}
+
+/* Featured reward */
+
+.featuredReward {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background: linear-gradient(
+    110deg,
+    rgba(237, 198, 111, 0.10),
+    rgba(144, 126, 220, 0.08)
+  );
+  border: 1px solid rgba(237, 198, 111, 0.25);
+  border-radius: 19px;
+}
+
+.featuredIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 66px;
+  height: 66px;
+  flex-shrink: 0;
+  color: #edc66f;
+  background: rgba(237, 198, 111, 0.13);
+  border: 1px solid rgba(237, 198, 111, 0.3);
+  border-radius: 17px;
+}
+
+.featuredContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardLabel {
+  color: #edc66f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.featuredContent h3 {
+  margin: 7px 0;
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.featuredContent p {
+  margin: 0;
+  color: #aeb8d0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lockedBadge {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  color: #e8c779;
+  background: rgba(237, 198, 111, 0.1);
+  border: 1px solid rgba(237, 198, 111, 0.3);
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Reward history */
+
+.historySection {
+  margin-top: 30px;
+}
+
+.historyHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.historyHeading h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.historyHeading p {
+  margin: 5px 0 0;
+  color: #9da9c3;
+  font-size: 13px;
+}
+
+.rewardCount {
+  color: #8ed9ad;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Individual rewards */
+
+.rewardList {
+  display: grid;
+  gap: 12px;
+}
+
+.rewardItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  background: #272d43;
+  border: 1px solid #3a425b;
+  border-radius: 15px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.rewardItem:hover {
+  background: #2c334b;
+  border-color: rgba(237, 198, 111, 0.4);
+}
+
+.rewardItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: #edc66f;
+  background: rgba(237, 198, 111, 0.12);
+  border-radius: 12px;
+}
+
+.rewardItemInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.rewardItemInfo strong {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.rewardItemInfo span {
+  color: #aeb8d0;
+  font-size: 12px;
+}
+
+.unlockedBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  color: #8ed9ad;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+/* Empty state */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 170px;
+  padding: 25px;
+  color: #9da9c3;
+  text-align: center;
+  background: #272d43;
+  border: 1px dashed #414a65;
+  border-radius: 16px;
+}
+
+.emptyState svg {
+  color: #edc66f;
+}
+
+.emptyState strong {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 650px) {
+  .rewardSection {
+    padding: 21px 17px;
+    border-radius: 19px;
+  }
+
+  .heading h2 {
+    font-size: 23px;
+  }
+
+  .featuredReward {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .featuredIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .featuredContent {
+    flex-basis: calc(100% - 70px);
+  }
+
+  .featuredContent h3 {
+    font-size: 20px;
+  }
+
+  .lockedBadge {
+    margin-left: 66px;
+  }
+
+  .rewardItem {
+    flex-wrap: wrap;
+    padding: 13px;
+  }
+
+  .rewardItemInfo strong {
+    font-size: 14px;
+  }
+
+  .unlockedBadge {
+    margin-left: auto;
+  }
+
+  .rewardCount {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rewardItem {
+    transition: none;
+  }
+}

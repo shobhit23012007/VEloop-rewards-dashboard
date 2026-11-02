@@ -1,0 +1,636 @@
+
+/* Main Section */
+
+.gameSection {
+  margin-top: 26px;
+  padding: 30px;
+  color: #f4f2ed;
+  background: linear-gradient(145deg, #20253a, #1b2032);
+  border: 1px solid rgba(180, 190, 215, 0.13);
+  border-radius: 24px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  color: #e5c16f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.heading h2 {
+  margin: 0;
+  color: #f7f5ef;
+  font-size: 26px;
+  font-weight: 750;
+}
+
+.subtitle {
+  margin: 9px 0 0;
+  color: #aeb7cc;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.headingIcon,
+.overlayIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #e7c574;
+  background: rgba(217, 185, 110, 0.12);
+  border: 1px solid rgba(217, 185, 110, 0.25);
+  border-radius: 17px;
+}
+
+.headingIcon {
+  width: 54px;
+  height: 54px;
+}
+
+/* Statistics */
+
+.gameStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 17px;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px 19px;
+  background: #272d42;
+  border: 1px solid rgba(180, 190, 215, 0.13);
+  border-radius: 15px;
+}
+
+.statCard span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aeb7cc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+.statCard span svg {
+  color: #e5c16f;
+}
+
+.statCard strong {
+  color: #f0cf7c;
+  font-size: 25px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Token Legend */
+
+.gameLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 0 0 15px;
+}
+
+.gameLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #b8c1d5;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.gameLegend span:nth-child(1) svg {
+  color: #e5c16f;
+}
+
+.gameLegend span:nth-child(2) svg {
+  color: #ef7777;
+}
+
+.gameLegend span:nth-child(3) svg {
+  color: #b9a9f1;
+}
+
+/* Game Area */
+
+.gameArea {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(217, 185, 110, 0.07),
+      transparent 55%
+    ),
+    #171c2d;
+  border: 1px solid rgba(180, 190, 215, 0.16);
+  border-radius: 19px;
+}
+
+.gameArea::before {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(217, 185, 110, 0.15) 1px,
+    transparent 1px
+  );
+  background-size: 25px 25px;
+  content: "";
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Ready and Result Screens */
+
+.overlay {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  padding: 30px;
+  text-align: center;
+}
+
+.overlayIcon {
+  width: 66px;
+  height: 66px;
+  margin-bottom: 18px;
+  border-radius: 20px;
+}
+
+.overlay h3 {
+  margin: 0;
+  color: #f7f5ef;
+  font-size: 24px;
+  font-weight: 750;
+}
+
+.overlay p {
+  max-width: 480px;
+  margin: 12px 0 22px;
+  color: #aeb7cc;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.overlay p strong {
+  color: #f0cf7c;
+}
+
+/* Buttons */
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 45px;
+  padding: 11px 21px;
+  color: #1c2030;
+  background: #e5c16f;
+  border: 1px solid #e5c16f;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: #f0d99e;
+  transform: translateY(-2px);
+}
+
+.primaryButton:focus-visible,
+.token:focus-visible,
+.resetButton:focus-visible {
+  outline: 2px solid #f0d99e;
+  outline-offset: 3px;
+}
+
+/* Playing Information */
+
+.playingInfo {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #aeb7cc;
+  font-size: 12px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Falling Tokens */
+
+.token {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  padding: 0;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate(-50%, -50%);
+  transition: scale 0.12s ease;
+  animation: tokenAppear 0.18s ease-out;
+}
+
+.token:hover {
+  scale: 1.1;
+}
+
+.token:active {
+  scale: 0.88;
+}
+
+@keyframes tokenAppear {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* XP Token */
+
+.xpToken {
+  color: #1b2032;
+  background: linear-gradient(145deg, #f0d99e, #d9b96e);
+  box-shadow:
+    0 0 0 7px rgba(217, 185, 110, 0.1),
+    0 7px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Bomb Token */
+
+.bombToken {
+  color: #fff;
+  background: linear-gradient(145deg, #f28a8a, #c84455);
+  box-shadow:
+    0 0 0 7px rgba(239, 100, 100, 0.13),
+    0 7px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Mystery Gift Token */
+
+.surpriseToken {
+  color: #fff;
+  background: linear-gradient(145deg, #c3b3ff, #8066d9);
+  box-shadow:
+    0 0 0 7px rgba(169, 155, 234, 0.13),
+    0 7px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Event Message */
+
+.gameMessage {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 14px;
+  max-width: calc(100% - 30px);
+  padding: 9px 15px;
+  color: #f0d99e;
+  background: #272d42;
+  border: 1px solid rgba(217, 185, 110, 0.3);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* How to Play - Game Rules */
+
+.gameRules {
+  margin-top: 20px;
+  padding: 24px;
+  background: #171c2d;
+  border: 1px solid rgba(180, 190, 215, 0.15);
+  border-radius: 18px;
+}
+
+.rulesHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.rulesEyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: #e5c16f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.rulesHeading h3 {
+  margin: 0;
+  color: #f7f5ef;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.rulesHeading p {
+  margin: 6px 0 0;
+  color: #aeb7cc;
+  font-size: 13px;
+}
+
+/* Three Steps */
+
+.rulesSteps {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 17px;
+}
+
+.ruleStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+}
+
+.ruleNumber {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.purple {
+  color: #d5baff;
+  background: rgba(145, 103, 220, 0.17);
+  border: 1px solid #7953bb;
+}
+
+.gold {
+  color: #f0cf7c;
+  background: rgba(229, 193, 111, 0.14);
+  border: 1px solid #a77e32;
+}
+
+.green {
+  color: #75e5bb;
+  background: rgba(43, 190, 142, 0.13);
+  border: 1px solid #278c70;
+}
+
+.ruleContent {
+  min-width: 0;
+}
+
+.ruleContent strong {
+  display: block;
+  margin: 2px 0 6px;
+  color: #f7f5ef;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.ruleContent p {
+  margin: 0;
+  color: #aeb7cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.ruleArrow {
+  flex-shrink: 0;
+  color: #8490a9;
+}
+
+/* Rules Information */
+
+.rulesBottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(180, 190, 215, 0.13);
+}
+
+.rulesBottom span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  color: #c2cbe0;
+  background: #272d42;
+  border: 1px solid rgba(180, 190, 215, 0.12);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.rulesBottom svg {
+  color: #e5c16f;
+}
+
+/* Reset Button */
+
+.resetButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-shrink: 0;
+  padding: 9px 13px;
+  color: #d6c18d;
+  background: rgba(217, 185, 110, 0.08);
+  border: 1px solid rgba(217, 185, 110, 0.3);
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.resetButton:hover {
+  background: rgba(217, 185, 110, 0.16);
+}
+
+/* Disclaimer */
+
+.disclaimer {
+  margin: 17px 0 0;
+  color: #8993aa;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .gameStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rulesSteps {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .ruleArrow {
+    display: none;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .gameSection {
+    padding: 20px;
+    border-radius: 19px;
+  }
+
+  .gameStats {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .statCard {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 15px;
+  }
+
+  .statCard strong {
+    font-size: 20px;
+  }
+
+  .gameArea,
+  .overlay {
+    min-height: 340px;
+  }
+
+  .gameLegend {
+    gap: 12px;
+  }
+
+  .token {
+    width: 58px;
+    height: 58px;
+  }
+
+  .gameRules {
+    padding: 18px 15px;
+  }
+
+  .rulesHeading h3 {
+    font-size: 17px;
+  }
+
+  .rulesHeading p {
+    font-size: 12px;
+  }
+
+  .ruleContent strong {
+    font-size: 13px;
+  }
+
+  .ruleContent p {
+    font-size: 11px;
+  }
+
+  .rulesBottom {
+    gap: 7px;
+  }
+
+  .rulesBottom span {
+    font-size: 10px;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 380px) {
+  .gameSection {
+    padding: 16px 13px;
+  }
+
+  .heading h2 {
+    font-size: 23px;
+  }
+
+  .playingInfo {
+    left: 12px;
+    right: 12px;
+    font-size: 10px;
+  }
+
+  .token {
+    width: 54px;
+    height: 54px;
+  }
+
+  .rulesHeading {
+    align-items: flex-start;
+  }
+
+  .resetButton {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .token,
+  .resetButton {
+    transition: none;
+    animation: none;
+  }
+}

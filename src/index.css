@@ -1,0 +1,155 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --color-bg: #111525;
+  --color-surface: #1b2134;
+  --color-surface-raised: #252c41;
+  --color-surface-hover: #2d354c;
+
+  --color-gold: #d9b96e;
+  --color-gold-light: #f0d99e;
+  --color-violet: #a99bea;
+  --color-green: #7bc9a8;
+
+  --color-text: #f4f2ed;
+  --color-muted: #a3aabd;
+  --color-border: rgba(180, 190, 215, 0.12);
+
+  --page-max-width: 1440px;
+  --page-padding: 40px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+
+  --shadow-card: 0 12px 35px rgba(0, 0, 0, 0.16);
+  --transition-fast: 180ms ease;
+
+  font-family: 'Inter', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, strong, label {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   GLOBAL DARK SCROLLBAR
+========================================= */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #45495f #161827;
+}
+
+/* Chrome, Edge and other WebKit browsers */
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #161827;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #45495f;
+  border: 1px solid #161827;
+  border-radius: 20px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #747991;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button {
+  display: none;
+}
