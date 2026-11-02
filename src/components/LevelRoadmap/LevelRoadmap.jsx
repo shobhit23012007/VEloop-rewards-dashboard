@@ -15,6 +15,8 @@ import {
   Gem,
   Gift,
   Zap,
+  Shield,
+  Sparkles,
 } from 'lucide-react';
 
 import styles from './LevelRoadmap.module.css';
@@ -27,6 +29,15 @@ const levelIcons = [
   TrendingUp,
   Crown,
   Gem,
+];
+
+const badgeThemes = [
+  'goldBadge',
+  'purpleBadge',
+  'silverBadge',
+  'silverBadge',
+  'silverBadge',
+  'masterBadge',
 ];
 
 function LevelRoadmap({
@@ -53,7 +64,7 @@ function LevelRoadmap({
   const statusLabels = {
     completed: 'Completed',
     current: 'Current',
-    next: 'Next',
+    next: 'Next Level',
     locked: 'Locked',
   };
 
@@ -72,7 +83,7 @@ function LevelRoadmap({
     return (
       <section className={styles.roadmap}>
         <p className={styles.eyebrow}>YOUR JOURNEY</p>
-        <h2 className={styles.mainTitle}>Progression Atlas</h2>
+        <h2 className={styles.mainTitle}>Level Progression</h2>
         <p className={styles.subtitle}>
           Level information is currently unavailable.
         </p>
@@ -114,19 +125,29 @@ function LevelRoadmap({
 
   const SelectedIcon = getLevelIcon(selectedLevelNumber);
 
+  const currentLevelData = levels.find(
+    (item) => Number(item.level) === Number(currentLevel)
+  );
+
+  const CurrentIcon = getLevelIcon(currentLevel);
+
   return (
     <section className={styles.roadmap}>
-      {/* Heading */}
+
+      {/* SECTION HEADING */}
       <div className={styles.heading}>
         <div>
-          <p className={styles.eyebrow}>YOUR JOURNEY</p>
+          <p className={styles.eyebrow}>
+            <Sparkles size={15} />
+            YOUR JOURNEY
+          </p>
 
           <h2 className={styles.mainTitle}>
-            Progression Atlas
+            Level Progression
           </h2>
 
           <p className={styles.subtitle}>
-            Explore your progression and upcoming milestones.
+            Unlock milestones, collect rewards and keep moving forward.
           </p>
         </div>
 
@@ -135,54 +156,120 @@ function LevelRoadmap({
         </div>
       </div>
 
-      {/* Level Cards */}
+      {/* CURRENT LEVEL SUMMARY */}
+      <div className={styles.currentSummary}>
+        <div className={styles.summaryIcon}>
+          <Shield size={25} />
+        </div>
+
+        <div className={styles.summaryInfo}>
+          <span>YOUR CURRENT LEVEL</span>
+
+          <strong>
+            Level {String(currentLevel).padStart(2, '0')}
+            {' · '}
+            {currentLevelData?.name ?? 'Member'}
+          </strong>
+        </div>
+
+        <div className={styles.summaryXP}>
+          <Zap size={19} />
+          <strong>{currentXP.toLocaleString('en-IN')} XP</strong>
+        </div>
+      </div>
+
+      {/* LEVEL BADGE CARDS */}
       <div className={styles.levelList}>
-        {levels.map((item) => {
+        {levels.map((item, index) => {
           const levelNumber = Number(item.level);
           const status = getStatus(levelNumber);
           const isSelected = selectedLevel === levelNumber;
+
           const LevelIcon = getLevelIcon(levelNumber);
+
+          const theme =
+            badgeThemes[index % badgeThemes.length];
 
           return (
             <button
               type="button"
               key={item.level}
-              className={`${styles.levelItem} ${styles[status]}`}
-              data-selected={isSelected}
+              className={`
+                ${styles.levelItem}
+                ${styles[status]}
+                ${isSelected ? styles.selectedItem : ''}
+              `}
               onClick={() => setSelectedLevel(levelNumber)}
               aria-pressed={isSelected}
-              aria-label={`View Level ${item.level}: ${item.name}`}
+              aria-label={`View Level ${levelNumber}: ${item.name}`}
             >
-              <div className={styles.levelIcon}>
-                {status === 'completed' ? (
-                  <Check size={21} />
-                ) : status === 'locked' ? (
-                  <Lock size={19} />
-                ) : (
-                  <LevelIcon size={22} />
-                )}
+              <div className={styles.cardTop}>
+                <span className={styles.levelLabel}>
+                  LEVEL {String(levelNumber).padStart(2, '0')}
+                </span>
+
+                <span className={styles.status}>
+                  {status === 'completed' ? (
+                    <Check size={13} />
+                  ) : status === 'locked' ? (
+                    <Lock size={13} />
+                  ) : (
+                    <Star size={13} />
+                  )}
+
+                  {statusLabels[status]}
+                </span>
+              </div>
+
+              {/* PREMIUM LEVEL BADGE */}
+              <div className={styles.badgeArea}>
+                <div
+                  className={`
+                    ${styles.badgeVisual}
+                    ${styles[theme]}
+                  `}
+                >
+                  <div className={styles.badgeOuter}>
+                    <div className={styles.badgeInner}>
+                      <LevelIcon
+                        className={styles.badgeIcon}
+                        size={25}
+                      />
+
+                      <span className={styles.badgeNumber}>
+                        {String(levelNumber).padStart(2, '0')}
+                      </span>
+
+                      <span className={styles.badgeCaption}>
+                        LEVEL
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className={styles.levelInfo}>
-                <strong>Level {item.level}</strong>
-                <span>{item.name}</span>
+                <strong>{item.name}</strong>
+                <span>{item.reward}</span>
               </div>
 
-              <span className={styles.status}>
-                {statusLabels[status]}
-              </span>
+              <div className={styles.cardFooter}>
+                <span>
+                  <Zap size={17} />
+                  {getRequiredXP(item).toLocaleString('en-IN')} XP
+                </span>
 
-              <ArrowUpRight
-                size={17}
-                className={styles.selectIcon}
-                aria-hidden="true"
-              />
+                <ArrowUpRight
+                  size={19}
+                  className={styles.selectIcon}
+                />
+              </div>
             </button>
           );
         })}
       </div>
 
-      {/* Selected Level Details */}
+      {/* SELECTED LEVEL DETAILS */}
       <div
         className={styles.levelDetails}
         aria-live="polite"
@@ -190,23 +277,33 @@ function LevelRoadmap({
       >
         <div className={styles.detailsHeading}>
           <div>
-            <p className={styles.eyebrow}>LEVEL DETAILS</p>
+            <p className={styles.eyebrow}>
+              <Sparkles size={14} />
+              LEVEL DETAILS
+            </p>
 
             <h3>
-              Level {selectedItem.level} · {selectedItem.name}
+              Level {String(selectedLevelNumber).padStart(2, '0')}
+              {' · '}
+              {selectedItem.name}
             </h3>
+
+            <p className={styles.subtitle}>
+              Explore this milestone and its associated reward.
+            </p>
           </div>
 
           <div className={styles.detailStar}>
-            <SelectedIcon size={27} />
+            <SelectedIcon size={29} />
           </div>
         </div>
 
         <div className={styles.detailsGrid}>
           <div className={styles.detailCard}>
             <span>
-              <Zap size={14} /> Required XP
+              <Zap size={15} /> Required XP
             </span>
+
             <strong>
               {requiredXP.toLocaleString('en-IN')} XP
             </strong>
@@ -214,15 +311,17 @@ function LevelRoadmap({
 
           <div className={styles.detailCard}>
             <span>
-              <Gift size={14} /> Level Reward
+              <Gift size={15} /> Level Reward
             </span>
+
             <strong>{getReward(selectedItem)}</strong>
           </div>
 
           <div className={styles.detailCard}>
             <span>
-              <Trophy size={14} /> Level Status
+              <Trophy size={15} /> Level Status
             </span>
+
             <strong className={styles[`${selectedStatus}Text`]}>
               {statusLabels[selectedStatus]}
             </strong>
@@ -230,8 +329,9 @@ function LevelRoadmap({
 
           <div className={styles.detailCard}>
             <span>
-              <Target size={14} /> XP Remaining
+              <Target size={15} /> XP Remaining
             </span>
+
             <strong>
               {remainingXP.toLocaleString('en-IN')} XP
             </strong>
@@ -244,7 +344,7 @@ function LevelRoadmap({
 
           {selectedStatus === 'current' &&
             (nextMilestone
-              ? 'You are currently at this level. Keep earning XP to reach your next milestone.'
+              ? `You are currently at this level. Earn ${remainingXP.toLocaleString('en-IN')} more XP to reach your next milestone.`
               : 'Congratulations! You have reached the highest available level.')}
 
           {selectedStatus === 'next' &&

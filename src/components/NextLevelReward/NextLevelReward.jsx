@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 
 import {
@@ -56,43 +55,62 @@ function getRewardIcon(reward = '') {
   return Gift;
 }
 
-function NextLevelReward({ currentXP, levels = [] }) {
-  const [unlockedRewards, setUnlockedRewards] = useState(getSavedRewards);
+function NextLevelReward({ currentXP = 0, levels = [] }) {
+  const xp = Math.max(0, Number(currentXP) || 0);
 
+  const [unlockedRewards, setUnlockedRewards] =
+    useState(getSavedRewards);
+
+  // Save newly unlocked rewards
   useEffect(() => {
     const newlyUnlocked = levels
       .filter((item) => {
         return (
-          Number(currentXP) >= Number(item.requiredXP ?? 0) &&
+          xp >= Number(item.requiredXP ?? 0) &&
           item.reward
         );
       })
       .map((item) => Number(item.level));
 
     setUnlockedRewards((previous) => {
-      const combined = [...new Set([...previous, ...newlyUnlocked])];
+      const combined = [
+        ...new Set([...previous, ...newlyUnlocked]),
+      ];
 
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(combined));
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(combined)
+        );
       } catch (error) {
-        console.error('Unable to save unlocked rewards:', error);
+        console.error(
+          'Unable to save unlocked rewards:',
+          error
+        );
       }
 
       return combined;
     });
-  }, [currentXP, levels]);
+  }, [xp, levels]);
 
+  // Find next upcoming reward
   const nextReward = levels
-    .filter((item) => Number(item.requiredXP ?? 0) > currentXP)
+    .filter(
+      (item) => Number(item.requiredXP ?? 0) > xp
+    )
     .sort(
-      (a, b) => Number(a.requiredXP) - Number(b.requiredXP)
+      (a, b) =>
+        Number(a.requiredXP) - Number(b.requiredXP)
     )[0];
 
+  // Get unlocked reward history
   const unlockedRewardItems = levels
     .filter((item) =>
       unlockedRewards.includes(Number(item.level))
     )
-    .sort((a, b) => Number(b.level) - Number(a.level));
+    .sort(
+      (a, b) => Number(b.level) - Number(a.level)
+    );
 
   const NextIcon = nextReward
     ? getRewardIcon(nextReward.reward)
@@ -100,11 +118,17 @@ function NextLevelReward({ currentXP, levels = [] }) {
 
   return (
     <section className={styles.rewardSection}>
-      {/* Heading */}
+
+      {/* SECTION HEADING */}
       <div className={styles.heading}>
         <div>
-          <p className={styles.eyebrow}>VELOOP REWARDS</p>
+          <p className={styles.eyebrow}>
+            <Sparkles size={14} />
+            VELOOP REWARDS
+          </p>
+
           <h2>Reward Vault</h2>
+
           <p className={styles.subtitle}>
             Track your unlocked rewards and upcoming milestones.
           </p>
@@ -115,19 +139,20 @@ function NextLevelReward({ currentXP, levels = [] }) {
         </div>
       </div>
 
-      {/* Upcoming Reward */}
+      {/* UPCOMING REWARD */}
       <div className={styles.featuredReward}>
+
+        <div className={styles.featuredGlow} />
+
         <div className={styles.featuredIcon}>
-          {nextReward ? (
-            <NextIcon size={29} />
-          ) : (
-            <Sparkles size={29} />
-          )}
+          <NextIcon size={30} />
         </div>
 
         <div className={styles.featuredContent}>
           <span className={styles.cardLabel}>
-            {nextReward ? 'UPCOMING REWARD' : 'ALL REWARDS UNLOCKED'}
+            {nextReward
+              ? 'UPCOMING REWARD'
+              : 'ALL REWARDS UNLOCKED'}
           </span>
 
           <h3>
@@ -141,6 +166,15 @@ function NextLevelReward({ currentXP, levels = [] }) {
               ? `Reach Level ${String(nextReward.level).padStart(2, '0')} with ${Number(nextReward.requiredXP).toLocaleString('en-IN')} XP to unlock this reward.`
               : 'You have unlocked every currently configured reward.'}
           </p>
+
+          {nextReward && (
+            <div className={styles.targetInfo}>
+              <Zap size={15} />
+              <span>
+                {Number(nextReward.requiredXP).toLocaleString('en-IN')} XP milestone
+              </span>
+            </div>
+          )}
         </div>
 
         {nextReward && (
@@ -149,10 +183,12 @@ function NextLevelReward({ currentXP, levels = [] }) {
             LOCKED
           </span>
         )}
+
       </div>
 
-      {/* Unlocked Reward History */}
+      {/* UNLOCKED REWARD HISTORY */}
       <div className={styles.historySection}>
+
         <div className={styles.historyHeading}>
           <div>
             <h3>Unlocked Rewards</h3>
@@ -176,7 +212,7 @@ function NextLevelReward({ currentXP, levels = [] }) {
                   key={item.level}
                 >
                   <div className={styles.rewardItemIcon}>
-                    <RewardIcon size={22} />
+                    <RewardIcon size={23} />
                   </div>
 
                   <div className={styles.rewardItemInfo}>
@@ -184,7 +220,8 @@ function NextLevelReward({ currentXP, levels = [] }) {
 
                     <span>
                       <Star size={13} />
-                      Level {String(item.level).padStart(2, '0')} ·{' '}
+                      Level {String(item.level).padStart(2, '0')}
+                      {' · '}
                       {item.name}
                     </span>
                   </div>
@@ -199,15 +236,18 @@ function NextLevelReward({ currentXP, levels = [] }) {
           </div>
         ) : (
           <div className={styles.emptyState}>
-            <div className={styles.rewardItemIcon}>
-              <Gift size={27} />
+            <div className={styles.emptyIcon}>
+              <Gift size={28} />
             </div>
 
             <strong>No rewards unlocked yet</strong>
 
-            <p>Keep earning XP to build your reward collection.</p>
+            <p>
+              Keep earning XP to build your reward collection.
+            </p>
           </div>
         )}
+
       </div>
     </section>
   );

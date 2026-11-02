@@ -1,194 +1,592 @@
 
+/* =========================================
+   MAIN ROADMAP CONTAINER
+========================================= */
+
 .roadmap {
   width: 100%;
+  min-width: 0;
   margin: 30px 0;
   padding: 30px;
-  background: linear-gradient(145deg, #20253a, #1b2032);
+  color: #f5f5fa;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(130, 92, 220, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #20243a, #191d30);
+
   border: 1px solid rgba(180, 190, 215, 0.13);
   border-radius: 24px;
-  color: #f4f2ed;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
+/* =========================================
+   HEADER
+========================================= */
 
 .heading {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 25px;
 }
 
 .eyebrow {
-  margin: 0 0 9px;
-  color: #e5c16f;
-  font-size: 12px;
-  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 10px;
+
+  color: #eac56d;
+  font-size: 11px;
+  font-weight: 850;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .mainTitle {
   margin: 0;
-  color: #f7f5ef;
-  font-size: clamp(22px, 3vw, 28px);
-  font-weight: 750;
+  color: #fff;
+  font-size: clamp(23px, 3vw, 29px);
+  font-weight: 850;
+  letter-spacing: -0.7px;
 }
 
 .subtitle {
   margin: 9px 0 0;
-  color: #aeb7cc;
+  color: #aeb7d0;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.trophyIcon,
-.detailStar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 54px;
-  height: 54px;
+.trophyIcon {
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
   flex-shrink: 0;
-  color: #e7c574;
-  background: rgba(217, 185, 110, 0.12);
-  border: 1px solid rgba(217, 185, 110, 0.25);
+
+  color: #f0cb73;
+  background: linear-gradient(
+    145deg,
+    rgba(234, 197, 109, 0.19),
+    rgba(234, 197, 109, 0.06)
+  );
+
+  border: 1px solid rgba(234, 197, 109, 0.32);
   border-radius: 17px;
 }
 
-.levelList {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
+/* =========================================
+   CURRENT LEVEL SUMMARY
+========================================= */
 
-.levelItem {
+.currentSummary {
   display: flex;
   align-items: center;
   gap: 13px;
-  min-width: 0;
-  min-height: 94px;
-  padding: 17px;
-  color: #f4f2ed !important;
-  text-align: left;
-  background: #272d42;
-  border: 1px solid rgba(180, 190, 215, 0.13);
-  border-radius: 17px;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease,
-    transform 0.2s ease, box-shadow 0.2s ease;
-}
+  margin-bottom: 25px;
+  padding: 15px 17px;
 
-.levelItem:hover {
-  background: #30374e;
-  border-color: rgba(217, 185, 110, 0.45);
-  transform: translateY(-3px);
-}
-
-.levelItem:focus-visible {
-  outline: 2px solid #e5c16f;
-  outline-offset: 3px;
-}
-
-.levelItem[data-selected="true"] {
   background: linear-gradient(
-    135deg,
-    rgba(217, 185, 110, 0.17),
-    rgba(217, 185, 110, 0.06)
+    100deg,
+    rgba(135, 94, 222, 0.13),
+    rgba(234, 197, 109, 0.07)
   );
-  border-color: #d9b96e;
-  box-shadow: 0 0 0 1px rgba(217, 185, 110, 0.1),
-    0 8px 24px rgba(217, 185, 110, 0.07);
+
+  border: 1px solid rgba(170, 143, 231, 0.19);
+  border-radius: 15px;
 }
 
-.levelIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
+.summaryIcon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
-  color: #e9c66f;
-  background: rgba(217, 185, 110, 0.17);
-  border-radius: 50%;
-  font-size: 19px;
-  font-weight: 800;
+
+  color: #eac56d;
+  background: rgba(234, 197, 109, 0.12);
+  border: 1px solid rgba(234, 197, 109, 0.2);
+  border-radius: 12px;
 }
 
-.completed .levelIcon {
-  color: #83d8b4;
-  background: rgba(71, 183, 139, 0.2);
-}
-
-.locked .levelIcon {
-  color: #a5aabc;
-  background: rgba(150, 158, 180, 0.14);
-}
-
-.levelInfo {
+.summaryInfo {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 5px;
   min-width: 0;
 }
 
-.levelInfo strong {
-  color: #f5f3ee;
-  font-size: 14px;
-  font-weight: 700;
+.summaryInfo span {
+  color: #aeb7d0;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.2px;
 }
 
-.levelInfo span {
+.summaryInfo strong {
+  overflow-wrap: anywhere;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.summaryXP {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  padding: 9px 12px;
+
+  color: #f0cd79;
+  background: rgba(234, 197, 109, 0.1);
+  border: 1px solid rgba(234, 197, 109, 0.2);
+  border-radius: 10px;
+
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   LEVEL GRID
+========================================= */
+
+.levelList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* =========================================
+   LEVEL CARD
+========================================= */
+
+.levelItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  min-width: 0;
+  min-height: 245px;
+  padding: 16px;
+
+  color: #f5f5fa;
+  text-align: left;
+
+  background: linear-gradient(145deg, #292e45, #20253a);
+  border: 1px solid rgba(180, 190, 215, 0.13);
+  border-radius: 19px;
+
+  cursor: pointer;
+  box-sizing: border-box;
   overflow: hidden;
-  color: #aeb7cc;
-  font-size: 13px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.levelItem::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 197, 109, 0.6),
+    transparent
+  );
+
+  content: '';
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.levelItem:hover {
+  transform: translateY(-4px);
+  border-color: rgba(234, 197, 109, 0.42);
+  box-shadow: 0 13px 30px rgba(0, 0, 0, 0.2);
+}
+
+.levelItem:hover::before {
+  opacity: 1;
+}
+
+.levelItem:focus-visible {
+  outline: 2px solid #eac56d;
+  outline-offset: 3px;
+}
+
+.selectedItem {
+  border-color: rgba(234, 197, 109, 0.8) !important;
+
+  background: linear-gradient(
+    145deg,
+    rgba(106, 79, 155, 0.28),
+    rgba(234, 197, 109, 0.09),
+    #22263b
+  ) !important;
+
+  box-shadow:
+    0 0 0 1px rgba(234, 197, 109, 0.12),
+    0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.selectedItem::before {
+  opacity: 1;
+}
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.levelLabel {
+  color: #aeb7d0;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+
+  color: #aeb7d0;
+  background: rgba(150, 158, 180, 0.1);
+  border: 1px solid rgba(150, 158, 180, 0.13);
+  border-radius: 20px;
+
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* =========================================
+   BADGE AREA
+========================================= */
+
+.badgeArea {
+  display: grid;
+  place-items: center;
+  height: 115px;
+  margin: 9px 0;
+}
+
+.badgeVisual {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  width: 104px;
+  height: 104px;
+
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.28));
+  transition: transform 0.3s ease;
+}
+
+.levelItem:hover .badgeVisual {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.badgeOuter {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  width: 96px;
+  height: 96px;
+
+  clip-path: polygon(
+    50% 0%,
+    88% 15%,
+    100% 50%,
+    88% 85%,
+    50% 100%,
+    12% 85%,
+    0% 50%,
+    12% 15%
+  );
+}
+
+.badgeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 83px;
+  height: 83px;
+
+  clip-path: polygon(
+    50% 0%,
+    88% 15%,
+    100% 50%,
+    88% 85%,
+    50% 100%,
+    12% 85%,
+    0% 50%,
+    12% 15%
+  );
+}
+
+.badgeIcon {
+  margin-bottom: 1px;
+}
+
+.badgeNumber {
+  font-size: 25px;
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+.badgeCaption {
+  margin-top: 3px;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   GOLD BADGE - LEVEL 01
+========================================= */
+
+.goldBadge .badgeOuter {
+  background: linear-gradient(
+    145deg,
+    #fff1ae,
+    #e6b94e 45%,
+    #94601f
+  );
+  box-shadow: 0 0 25px rgba(234, 197, 109, 0.25);
+}
+
+.goldBadge .badgeInner {
+  color: #ffe8a1;
+  background: linear-gradient(145deg, #57401c, #241e2c);
+}
+
+/* =========================================
+   PURPLE BADGE - LEVEL 02
+========================================= */
+
+.purpleBadge .badgeOuter {
+  background: linear-gradient(
+    145deg,
+    #e2caff,
+    #a77bea 45%,
+    #54378e
+  );
+  box-shadow: 0 0 25px rgba(167, 123, 234, 0.25);
+}
+
+.purpleBadge .badgeInner {
+  color: #e6d0ff;
+  background: linear-gradient(145deg, #463264, #241f39);
+}
+
+/* =========================================
+   SILVER BADGES - LEVEL 03 TO 05
+========================================= */
+
+.silverBadge .badgeOuter {
+  background: linear-gradient(
+    145deg,
+    #f0f3ff,
+    #aebbd5 45%,
+    #5b6988
+  );
+  box-shadow: 0 0 22px rgba(174, 187, 213, 0.13);
+}
+
+.silverBadge .badgeInner {
+  color: #e5edff;
+  background: linear-gradient(145deg, #394761, #20283c);
+}
+
+/* =========================================
+   MASTER BADGE - LEVEL 06
+========================================= */
+
+.masterBadge .badgeOuter {
+  background: linear-gradient(
+    145deg,
+    #fff1bd,
+    #d6ad57 35%,
+    #8b5bb5 75%,
+    #55357f
+  );
+  box-shadow: 0 0 28px rgba(201, 157, 255, 0.22);
+}
+
+.masterBadge .badgeInner {
+  color: #ffe8b0;
+  background: linear-gradient(145deg, #44304f, #242239);
+}
+
+/* =========================================
+   STATUS-BASED BADGE OVERRIDES
+========================================= */
+
+.completed .badgeVisual {
+  filter: drop-shadow(0 0 12px rgba(91, 214, 160, 0.23));
+}
+
+.completed .badgeOuter {
+  background: linear-gradient(145deg, #a8f1cf, #45a783, #245f50);
+}
+
+.completed .badgeInner {
+  color: #c3ffe2;
+  background: linear-gradient(145deg, #21483d, #1b302e);
+}
+
+.locked .badgeVisual {
+  filter: grayscale(0.65) drop-shadow(0 5px 9px rgba(0, 0, 0, 0.25));
+}
+
+.locked .badgeInner {
+  color: #aebbd2;
+  background: linear-gradient(145deg, #343d53, #222a3d);
+}
+
+.current .status {
+  color: #f1cf7e;
+  background: rgba(234, 197, 109, 0.13);
+  border-color: rgba(234, 197, 109, 0.28);
+}
+
+.next .status {
+  color: #d0b6ff;
+  background: rgba(151, 112, 226, 0.14);
+  border-color: rgba(151, 112, 226, 0.24);
+}
+
+.completed .status {
+  color: #82e1b7;
+  background: rgba(71, 183, 139, 0.12);
+  border-color: rgba(71, 183, 139, 0.2);
+}
+
+/* =========================================
+   LEVEL INFORMATION
+========================================= */
+
+.levelInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  margin-top: auto;
+}
+
+.levelInfo strong {
+  overflow: hidden;
+  color: #f8f7f3;
+  font-size: 15px;
+  font-weight: 850;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.status {
-  flex-shrink: 0;
-  color: #b8c0d2;
+.levelInfo span {
+  overflow: hidden;
+  color: #aeb7d0;
   font-size: 11px;
-  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.completed .status {
-  color: #7bd6ad;
+/* =========================================
+   CARD FOOTER
+========================================= */
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  margin-top: 13px;
+  padding-top: 11px;
+
+  border-top: 1px solid rgba(180, 190, 215, 0.1);
 }
 
-.current .status {
-  color: #eac66f;
-}
+.cardFooter > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 
-.next .status {
-  color: #b9a9f1;
+  color: #d8bd79;
+  font-size: 11px;
+  font-weight: 750;
 }
 
 .selectIcon {
   flex-shrink: 0;
-  color: #8992a8;
+  color: #8f98b2;
   transition: transform 0.2s ease;
 }
 
 .levelItem:hover .selectIcon {
-  color: #e5c16f;
+  color: #eac56d;
   transform: translate(2px, -2px);
 }
 
+/* =========================================
+   LEVEL DETAILS
+========================================= */
+
 .levelDetails {
-  margin-top: 24px;
+  position: relative;
+  margin-top: 23px;
   padding: 25px;
-  background: linear-gradient(145deg, #252b40, #20263a);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(137, 97, 210, 0.13),
+      transparent 38%
+    ),
+    linear-gradient(145deg, #282d44, #20253a);
+
   border: 1px solid rgba(180, 190, 215, 0.13);
-  border-radius: 19px;
-  animation: detailsEnter 0.25s ease;
+  border-radius: 20px;
+
+  animation: detailsEnter 0.3s ease;
 }
 
 @keyframes detailsEnter {
   from {
     opacity: 0;
-    transform: translateY(7px);
+    transform: translateY(9px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -197,74 +595,101 @@
 
 .detailsHeading {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 22px;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 23px;
 }
 
 .detailsHeading h3 {
   margin: 0;
-  color: #f7f5ef;
+  color: #fff;
   font-size: 21px;
-  font-weight: 750;
+  font-weight: 850;
+  letter-spacing: -0.4px;
+}
+
+.detailStar {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+
+  color: #f1d083;
+  background: rgba(234, 197, 109, 0.12);
+  border: 1px solid rgba(234, 197, 109, 0.25);
+  border-radius: 17px;
 }
 
 .detailsGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
+  gap: 12px;
 }
 
 .detailCard {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  align-items: flex-start;
+  gap: 9px;
+
   min-width: 0;
-  padding: 18px;
-  background: rgba(13, 18, 32, 0.4);
+  padding: 16px;
+
+  background: rgba(13, 18, 32, 0.42);
   border: 1px solid rgba(180, 190, 215, 0.1);
   border-radius: 14px;
 }
 
 .detailCard span {
-  color: #aeb7cc;
-  font-size: 12px;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #aeb7d0;
+  font-size: 11px;
+  font-weight: 650;
 }
 
 .detailCard strong {
   overflow-wrap: anywhere;
-  color: #f5f3ee;
-  font-size: 16px;
-  font-weight: 750;
+  color: #f8f7f3;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .completedText {
-  color: #7bd6ad !important;
+  color: #83dfb5 !important;
 }
 
 .currentText {
-  color: #eac66f !important;
+  color: #f0cf7e !important;
 }
 
 .nextText {
-  color: #b9a9f1 !important;
+  color: #c9a8ff !important;
 }
 
 .lockedText {
-  color: #a5aabc !important;
+  color: #a5aec4 !important;
 }
 
 .detailMessage {
-  margin: 18px 0 0;
-  padding: 13px 15px;
-  color: #c1cadc;
-  background: rgba(217, 185, 110, 0.07);
-  border-left: 3px solid #c8a95f;
-  border-radius: 5px 10px 10px 5px;
-  font-size: 13px;
-  line-height: 1.6;
+  margin: 17px 0 0;
+  padding: 14px 16px;
+
+  color: #c4cce0;
+  background: rgba(234, 197, 109, 0.07);
+  border: 1px solid rgba(234, 197, 109, 0.12);
+  border-radius: 12px;
+
+  font-size: 12px;
+  line-height: 1.65;
 }
+
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 1050px) {
   .levelList {
@@ -276,37 +701,156 @@
   }
 }
 
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 600px) {
   .roadmap {
+    margin: 22px 0;
     padding: 19px;
     border-radius: 19px;
   }
 
   .heading {
-    gap: 12px;
+    gap: 10px;
+    margin-bottom: 19px;
+  }
+
+  .mainTitle {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 12px;
   }
 
   .trophyIcon {
     width: 44px;
     height: 44px;
+    border-radius: 13px;
+  }
+
+  .currentSummary {
+    gap: 9px;
+    margin-bottom: 18px;
+    padding: 11px;
+  }
+
+  .summaryIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .summaryInfo span {
+    font-size: 9px;
+  }
+
+  .summaryInfo strong {
+    font-size: 12px;
+  }
+
+  .summaryXP {
+    gap: 5px;
+    padding: 8px;
+    font-size: 10px;
   }
 
   .levelList {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
   }
 
   .levelItem {
-    min-height: 82px;
-    padding: 13px;
+    min-height: 220px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .levelLabel {
+    font-size: 8px;
+  }
+
+  .status {
+    gap: 3px;
+    padding: 4px 6px;
+    font-size: 7px;
+  }
+
+  .badgeArea {
+    height: 99px;
+    margin: 7px 0;
+  }
+
+  .badgeVisual {
+    width: 88px;
+    height: 88px;
+  }
+
+  .badgeOuter {
+    width: 84px;
+    height: 84px;
+  }
+
+  .badgeInner {
+    width: 73px;
+    height: 73px;
+  }
+
+  .badgeIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .badgeNumber {
+    font-size: 21px;
+  }
+
+  .badgeCaption {
+    font-size: 6px;
+  }
+
+  .levelInfo strong {
+    font-size: 12px;
+  }
+
+  .levelInfo span {
+    font-size: 9px;
+  }
+
+  .cardFooter {
+    margin-top: 10px;
+    padding-top: 9px;
+  }
+
+  .cardFooter > span {
+    gap: 4px;
+    font-size: 9px;
+  }
+
+  .selectIcon {
+    width: 15px;
+    height: 15px;
   }
 
   .levelDetails {
-    padding: 18px;
+    margin-top: 17px;
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  .detailsHeading {
+    margin-bottom: 17px;
   }
 
   .detailsHeading h3 {
     font-size: 17px;
+  }
+
+  .detailStar {
+    width: 47px;
+    height: 47px;
+    border-radius: 13px;
   }
 
   .detailsGrid {
@@ -315,38 +859,78 @@
   }
 
   .detailCard {
-    padding: 13px;
+    gap: 7px;
+    padding: 12px;
   }
 
-  .detailCard strong {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 380px) {
-  .status {
+  .detailCard span {
     font-size: 10px;
   }
 
-  .levelItem {
-    gap: 9px;
+  .detailCard strong {
+    font-size: 13px;
   }
 
-  .levelIcon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .detailsGrid {
-    grid-template-columns: 1fr;
+  .detailMessage {
+    margin-top: 13px;
+    padding: 11px;
+    font-size: 10px;
   }
 }
 
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .roadmap {
+    padding: 15px;
+  }
+
+  .levelList {
+    gap: 8px;
+  }
+
+  .levelItem {
+    min-height: 210px;
+    padding: 9px;
+  }
+
+  .status {
+    font-size: 6px;
+  }
+
+  .levelInfo strong {
+    font-size: 11px;
+  }
+
+  .summaryInfo strong {
+    font-size: 10px;
+  }
+
+  .summaryXP {
+    gap: 4px;
+    padding: 7px;
+    font-size: 9px;
+  }
+
+  .detailsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
   .levelItem,
-  .selectIcon,
+  .badgeVisual,
+  .selectIcon {
+    transition: none;
+  }
+
   .levelDetails {
     animation: none;
-    transition: none;
   }
 }

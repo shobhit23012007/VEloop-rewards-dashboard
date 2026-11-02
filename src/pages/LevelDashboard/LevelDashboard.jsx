@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import styles from './LevelDashboard.module.css';
@@ -523,8 +524,90 @@ function LevelDashboard() {
           <div className={styles.levelCard}>
             <p className={styles.label}>CURRENT LEVEL</p>
 
-            <div className={styles.levelNumber}>
-              {String(currentLevel).padStart(2, '0')}
+            {/* Dynamic premium badge - only the level number changes */}
+            <div className={styles.currentBadge}>
+              <svg
+                className={styles.badgeArtwork}
+                viewBox="0 0 300 340"
+                role="img"
+                aria-label={`Current level ${currentLevel} badge`}
+              >
+                <defs>
+                  <linearGradient id="badgeGoldFrame" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#fff6b8" />
+                    <stop offset="24%" stopColor="#ffd85b" />
+                    <stop offset="55%" stopColor="#e89a20" />
+                    <stop offset="78%" stopColor="#fff0a0" />
+                    <stop offset="100%" stopColor="#a95713" />
+                  </linearGradient>
+                  <linearGradient id="badgeGoldRibbon" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#fff0a0" />
+                    <stop offset="42%" stopColor="#ffd34e" />
+                    <stop offset="100%" stopColor="#d58b19" />
+                  </linearGradient>
+                  <linearGradient id="badgePurpleFill" x1="0" y1="0" x2="0.8" y2="1">
+                    <stop offset="0%" stopColor="#482044" />
+                    <stop offset="58%" stopColor="#24132f" />
+                    <stop offset="100%" stopColor="#160f27" />
+                  </linearGradient>
+                  <filter id="badgeGlow" x="-35%" y="-35%" width="170%" height="170%">
+                    <feGaussianBlur stdDeviation="4" result="glow" />
+                    <feMerge>
+                      <feMergeNode in="glow" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                {/* Layered stepped shield frame */}
+                <path d="M150 7 L174 27 L257 76 L257 101 L282 119 L282 207 L264 231 L264 250 L150 333 L36 250 L36 231 L18 207 L18 119 L43 101 L43 76 L126 27 Z" fill="url(#badgeGoldFrame)" stroke="#fff0a0" strokeWidth="3" filter="url(#badgeGlow)" />
+                <path d="M150 19 L178 43 L246 83 L246 109 L269 126 L269 202 L248 229 L248 244 L150 319 L52 244 L52 229 L31 202 L31 126 L54 109 L54 83 L122 43 Z" fill="#35172f" stroke="#f4a92c" strokeWidth="3" />
+                <path d="M150 34 L177 55 L234 91 L234 117 L254 132 L254 195 L233 220 L233 237 L150 304 L67 237 L67 220 L46 195 L46 132 L66 117 L66 91 L123 55 Z" fill="url(#badgePurpleFill)" stroke="#e59aff" strokeWidth="2.2" />
+                <path d="M150 43 L174 63 L225 96 L225 121 L244 136 L244 191 L224 216 L224 230 L150 294 L76 230 L76 216 L56 191 L56 136 L75 121 L75 96 L126 63 Z" fill="none" stroke="#a95a9d" strokeWidth="1.8" />
+
+                {/* Top star and sprout */}
+                <path d="M150 52 L156 65 L170 67 L160 77 L163 91 L150 84 L137 91 L140 77 L130 67 L144 65 Z" fill="#ffd86b" stroke="#fff0a0" strokeWidth="1.5" />
+                <g fill="#ffd66a" stroke="#ffdc78" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M150 111 V151 M136 151 H164" fill="none" />
+                  <path d="M150 132 C127 130 116 111 120 101 C137 102 148 114 150 132Z" />
+                  <path d="M150 132 C173 130 184 111 180 101 C163 102 152 114 150 132Z" />
+                </g>
+
+                {/* Left laurel */}
+                <g fill="#e9a64a" stroke="#ffd078" strokeWidth="1.3">
+                  <path d="M105 238 C63 207 54 151 91 111" fill="none" strokeWidth="3" />
+                  <ellipse cx="72" cy="207" rx="6" ry="14" transform="rotate(-48 72 207)" />
+                  <ellipse cx="61" cy="184" rx="6" ry="14" transform="rotate(-34 61 184)" />
+                  <ellipse cx="61" cy="160" rx="6" ry="14" transform="rotate(-12 61 160)" />
+                  <ellipse cx="71" cy="137" rx="6" ry="14" transform="rotate(20 71 137)" />
+                  <ellipse cx="88" cy="119" rx="6" ry="14" transform="rotate(42 88 119)" />
+                  <ellipse cx="94" cy="228" rx="6" ry="14" transform="rotate(-58 94 228)" />
+                </g>
+
+                {/* Right laurel */}
+                <g fill="#e9a64a" stroke="#ffd078" strokeWidth="1.3">
+                  <path d="M195 238 C237 207 246 151 209 111" fill="none" strokeWidth="3" />
+                  <ellipse cx="228" cy="207" rx="6" ry="14" transform="rotate(48 228 207)" />
+                  <ellipse cx="239" cy="184" rx="6" ry="14" transform="rotate(34 239 184)" />
+                  <ellipse cx="239" cy="160" rx="6" ry="14" transform="rotate(12 239 160)" />
+                  <ellipse cx="229" cy="137" rx="6" ry="14" transform="rotate(-20 229 137)" />
+                  <ellipse cx="212" cy="119" rx="6" ry="14" transform="rotate(-42 212 119)" />
+                  <ellipse cx="206" cy="228" rx="6" ry="14" transform="rotate(58 206 228)" />
+                </g>
+
+                {/* Dynamic number: 1, 2, 3... no leading zero */}
+                <text x="150" y="204" textAnchor="middle" dominantBaseline="middle" className={styles.badgeNumber}>
+                  {currentLevel}
+                </text>
+
+                {/* Front ribbon */}
+                <path d="M18 231 L57 214 L243 214 L282 231 L261 269 L224 251 L76 251 L39 269 Z" fill="url(#badgeGoldRibbon)" stroke="#ffe99a" strokeWidth="2.5" />
+                <path d="M39 269 L76 251 L224 251 L261 269" fill="none" stroke="#9f5b18" strokeWidth="2" />
+                <text x="150" y="243" textAnchor="middle" className={styles.badgeRibbonText}>★ LEVEL ★</text>
+
+                {/* Bottom star */}
+                <path d="M150 267 L159 283 L176 286 L163 298 L166 315 L150 306 L134 315 L137 298 L124 286 L141 283 Z" fill="#ffdc70" stroke="#fff0a0" strokeWidth="2" />
+              </svg>
             </div>
 
             <h2>{currentLevelData?.name ?? 'Member'}</h2>
