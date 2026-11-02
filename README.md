@@ -1,84 +1,124 @@
 # VELOOP Rewards – Level-Up Dashboard
 
-### Task | Complete Level-Up Dashboard Redesign
+### Task: Complete Level-Up Dashboard Redesign
+
+**A Gamified Level Progression, Rewards & Engagement Hub**
 
 <p align="center">
-  <strong>A Gamified Level Progression, Rewards & Engagement Hub</strong>
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Status-In%20Progress-8A63D2?style=for-the-badge" alt="Status" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Project-VELOOP%20Rewards-eac56d?style=for-the-badge" alt="Project"/>
-  <img src="https://img.shields.io/badge/Status-In%20Progress-8b5cf6?style=for-the-badge" alt="Status"/>
-  <img src="https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge" alt="React"/>
-  <img src="https://img.shields.io/badge/Build-Vite-646cff?style=for-the-badge" alt="Vite"/>
+  <a href="https://v-eloop-rewards-dashboard.vercel.app/"><strong>Live Demo</strong></a>
+  &nbsp; | &nbsp;
+  <a href="https://github.com/shobhit23012007/VEloop-rewards-dashboard"><strong>GitHub Repository</strong></a>
 </p>
 
 ---
 
-## About The Project
+## 1. Project Overview
 
-**VELOOP Rewards** is a gamified dashboard redesign developed as part of the VELOOP Rewards Frontend Development Task Assignment.
+**VELOOP Rewards** is a gamified Level-Up Dashboard developed as part of the VELOOP Rewards Frontend Development Task Assignment.
 
-The project focuses on creating an engaging and interactive user experience where users can explore activities, earn Experience Points (XP), progress through different levels, play mini-games, and track their reward journey.
+The project focuses on creating an engaging and interactive user experience through an XP-based progression system, reward milestones, daily earning activities, and interactive mini-games.
 
-The dashboard combines level-based progression, interactive earning activities, reward milestones, and a modern interface to make user engagement more enjoyable.
+Users can explore their current level, monitor accumulated Experience Points (XP), participate in different earning activities, and track their progression through a visually engaging dashboard.
 
-The main objective is to build a visually appealing, responsive, and user-friendly dashboard with reusable React components and interactive frontend functionality.
+The application combines modern UI design, reusable React components, interactive frontend functionality, and responsive layouts to provide a consistent experience across different devices.
+
+### Project Objectives
+
+- Create an engaging and interactive gamified dashboard.
+- Display current levels, XP balances, and progression indicators.
+- Provide an interactive level roadmap and reward milestones.
+- Encourage daily participation through login rewards and streak bonuses.
+- Introduce mini-games and simulated XP earning activities.
+- Track recent XP transactions and activity history.
+- Develop a responsive and user-friendly interface.
+- Maintain reusable and modular React components.
+
+### Project Highlights
+
+| Area | Description |
+|---|---|
+| Gamification | XP-based progression and level milestones |
+| Engagement | Daily login rewards and interactive activities |
+| Mini-Games | Interactive XP Catcher game |
+| Rewards | Upcoming reward and milestone information |
+| Tracking | XP balance and recent activity history |
+| Navigation | Expandable and collapsible sidebar |
+| UI/UX | Modern dark-themed responsive interface |
 
 ---
 
-## Project Overview
+## 2. Project Information
 
 | Project Detail | Information |
 |---|---|
 | Project Name | VELOOP Rewards |
-| Assignment | Task 16 – Complete Level-Up Dashboard Redesign |
+| Assignment | Task – Complete Level-Up Dashboard Redesign |
 | Project Domain | Frontend Development |
 | Application Type | Gamified Rewards Dashboard |
 | Frontend Framework | React.js |
 | Build Tool | Vite |
-| Styling | CSS3, CSS Modules, Bootstrap |
 | Programming Language | JavaScript |
+| Styling | CSS3, CSS Modules, Bootstrap |
+| Icons | Lucide React |
+| Data Persistence | Browser LocalStorage |
 | Version Control | Git & GitHub |
+| Deployment Platform | Vercel |
 | Current Status | In Progress |
-| Completion | Approximately 70–80% |
+| Project Completion | Approximately 70–80% |
 
 ---
 
-## Key Features
+## 3. Live Application
 
-### 1. Level Progression Dashboard
+The application is deployed on Vercel and can be accessed through the following link.
+
+**Live Website:** [VELOOP Rewards Dashboard](https://v-eloop-rewards-dashboard.vercel.app/)
+
+**GitHub Repository:** [VELOOP Rewards – Source Code](https://github.com/shobhit23012007/VEloop-rewards-dashboard)
+
+---
+
+## 4. Key Features
+
+### 4.1 Level Progression Dashboard
 
 - Displays the user's current level and level title.
-- Shows accumulated XP and progress towards the next level.
+- Shows accumulated Experience Points (XP).
 - Provides a visual progress indicator.
-- Displays the remaining XP required to reach the next level.
+- Displays remaining XP required for the next level.
 - Helps users understand their progression journey.
 
-### 2. Interactive Level Roadmap
+### 4.2 Interactive Level Roadmap
 
-- Displays the available progression levels.
+- Displays available progression levels.
 - Allows users to explore different level milestones.
-- Shows level-related information and reward details.
+- Shows relevant level and reward information.
 - Provides a visual representation of progression.
 
-### 3. Daily XP Rewards
+### 4.3 Daily XP Rewards
 
 - Daily login reward functionality.
 - XP claiming interaction.
 - Login streak tracking.
-- Additional streak-based XP bonus.
+- Additional streak-based XP rewards.
 - Daily claim status management.
 
-### 4. Watch Ads & Earn XP
+### 4.4 Watch Ads & Earn XP
 
-- Interactive Watch Ads section.
+- Interactive advertisement earning section.
 - Simulated advertisement reward flow.
 - XP rewards for eligible demo activities.
 - Daily advertisement limit.
 - Reward tracking and cooldown handling.
 
-### 5. XP Catcher Mini-Game
+### 4.5 XP Catcher Mini-Game
 
 An interactive mini-game designed to make XP collection more engaging.
 
@@ -92,38 +132,36 @@ An interactive mini-game designed to make XP collection more engaging.
 - Score and reward tracking.
 - Replay functionality.
 
-The mini-game uses a time-based gameplay system with different collectible and obstacle elements.
-
-### 6. Reward Milestones
+### 4.6 Reward Milestones
 
 - Displays upcoming reward milestones.
 - Connects reward information with level progression.
 - Highlights progression-based achievements.
 - Helps users understand their next reward goals.
 
-### 7. XP Activity History
+### 4.7 XP Activity History
 
 - Displays recent XP-related activities.
-- Tracks reward and earning events.
-- Shows changes in the user's XP balance.
+- Tracks XP earning events.
+- Shows activity-related XP changes.
 - Helps users review their recent progress.
 
-### 8. Level-Up Celebration
+### 4.8 Level-Up Celebration
 
 - Interactive level-up celebration interface.
-- Visual effects and confetti animation.
+- Confetti and visual effects.
 - Displays the newly achieved level.
 - Provides feedback when a progression milestone is reached.
 
-### 9. Collapsible Sidebar Navigation
+### 4.9 Collapsible Sidebar Navigation
 
 - Expandable and collapsible sidebar.
 - Icon-based navigation in collapsed mode.
-- Smooth navigation between dashboard sections.
+- Navigation between dashboard sections.
 - Mobile navigation with a toggle menu.
-- Account navigation options for Profile, Settings, and Help & Support.
+- Organized dashboard and account navigation options.
 
-### 10. Responsive User Interface
+### 4.10 Responsive User Interface
 
 - Responsive dashboard layout.
 - Desktop and laptop support.
@@ -133,60 +171,75 @@ The mini-game uses a time-based gameplay system with different collectible and o
 
 ---
 
-## Technology Stack
+## 5. Technology Stack
 
-| Technology | Usage |
+| Technology | Purpose |
 |---|---|
 | React.js | Component-based frontend development |
-| Vite | Fast development server and production build |
+| Vite | Development server and production build |
 | JavaScript (ES6+) | Application logic and interactions |
 | HTML5 | Application structure |
 | CSS3 | Styling and responsive layouts |
-| CSS Modules | Scoped component styling |
+| CSS Modules | Component-level scoped styling |
 | Bootstrap | Responsive utilities and UI support |
 | Lucide React | Interface icons |
 | Browser LocalStorage | Local demo data persistence |
 | Git | Version control |
 | GitHub | Source code hosting |
+| Vercel | Application deployment |
 
 ---
 
-## Application Architecture
+## 6. Application Architecture
 
-The application follows a component-based React architecture.
+The project follows a component-based React architecture.
 
-Major interface sections are separated into reusable components to keep the code organized and easier to maintain.
+Individual dashboard sections are separated into reusable components to improve code organization, maintainability, and scalability.
 
-### Main Application Flow
+### Application Workflow
 
 ```text
-                   VELOOP REWARDS
-                          |
-                          |
-                   Level Dashboard
-                          |
-          +---------------+---------------+
-          |               |               |
-      Level Progress   Reward Hub     Navigation
-          |               |               |
-      Level Roadmap   Earn More XP    Sidebar
-          |               |               |
-      Next Reward     +---+---+       Dashboard Sections
-                      |       |
-                  Daily XP  Watch Ads
-                      |
-                  XP Catcher
-                      |
-                 XP Activity
-                      |
-                Level-Up Event
-                      |
-              Celebration Interface
+                    VELOOP REWARDS
+                           |
+                           |
+                    Level Dashboard
+                           |
+          +----------------+----------------+
+          |                |                |
+     Level Progress    Reward Hub      Navigation
+          |                |                |
+     Level Roadmap    Earn More XP       Sidebar
+          |                |
+     Next Reward       +---+---+
+                       |       |
+                    Daily XP  Watch Ads
+                       |
+                   XP Catcher
+                       |
+                   XP Activity
+                       |
+                  Level-Up Event
+                       |
+               Celebration Interface
 ```
+
+### Component Architecture
+
+| Component | Responsibility |
+|---|---|
+| CommonHeader | Header navigation and user-related controls |
+| Sidebar | Dashboard section navigation |
+| LevelRoadmap | Level progression display |
+| EarnMoreXP | Daily XP and advertisement earning activities |
+| XPCatcher | Interactive XP mini-game |
+| NextLevelReward | Upcoming level reward information |
+| XPActivity | Recent XP activity history |
+| LevelUpCelebration | Level-up celebration interface |
+| GameRewardsSpotlight | Gamification and rewards highlights |
 
 ---
 
-## Project Folder Structure
+## 7. Project Folder Structure
 
 ```text
 VELOOP-Rewards-Dashboard/
@@ -198,7 +251,6 @@ VELOOP-Rewards-Dashboard/
 │   ├── assets/
 │   │
 │   ├── components/
-│   │   │
 │   │   ├── CommonHeader/
 │   │   ├── EarnMoreXP/
 │   │   ├── GameRewardsSpotlight/
@@ -238,63 +290,12 @@ VELOOP-Rewards-Dashboard/
 
 ---
 
-## Getting Started
+## 8. XP & Level Progression Workflow
 
-Follow these instructions to run the project locally.
-
-### Prerequisites
-
-Make sure the following tools are installed:
-
-- Node.js
-- npm
-- Git
-- Visual Studio Code (recommended)
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/shobhit23012007/VEloop-rewards-dashboard.git
-```
-
-### 2. Navigate to the Project Directory
-
-```bash
-cd VEloop-rewards-dashboard
-```
-
-### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-### 4. Start the Development Server
-
-```bash
-npm run dev
-```
-
-Vite will start the local development server.
-
-Open the localhost URL displayed in your terminal to access the dashboard.
-
-### 5. Create Production Build
-
-```bash
-npm run build
-```
-
-The optimized production files will be generated inside the `dist/` directory.
-
----
-
-## XP & Level Progression Workflow
-
-The dashboard uses an XP-based progression model.
+The dashboard follows an XP-based progression model.
 
 1. Users interact with available earning activities.
-2. Eligible activities generate demo XP rewards.
+2. Eligible activities generate demonstration XP rewards.
 3. Earned XP updates the dashboard progress.
 4. The dashboard calculates progression towards the next level.
 5. Reaching the required XP triggers the level-up experience.
@@ -313,11 +314,11 @@ The dashboard uses an XP-based progression model.
 
 ---
 
-## Data Persistence
+## 9. Data Persistence
 
-The current implementation uses the browser's LocalStorage for demo data persistence.
+The current implementation uses browser LocalStorage for demo data persistence.
 
-It supports local storage of selected application data such as:
+Selected application data includes:
 
 - Current XP.
 - Current level.
@@ -325,27 +326,76 @@ It supports local storage of selected application data such as:
 - Daily login information.
 - Advertisement reward information.
 
-**Important:** LocalStorage is browser-profile-specific. Data is not synchronized between different users or devices.
+**Important:** LocalStorage is specific to the current browser profile. Data is not synchronized between different users or devices.
 
 ---
 
-## Screenshots
+## 10. Getting Started
 
-Screenshots of the dashboard will be added here to demonstrate the application's interface and functionality.
+Follow these instructions to run the project locally.
+
+### Prerequisites
+
+Make sure the following tools are installed:
+
+- Node.js
+- npm
+- Git
+- Visual Studio Code (recommended)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/shobhit23012007/VEloop-rewards-dashboard.git
+```
+
+### Step 2: Navigate to the Project Directory
+
+```bash
+cd VEloop-rewards-dashboard
+```
+
+### Step 3: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 4: Start the Development Server
+
+```bash
+npm run dev
+```
+
+Vite will start the local development server.
+
+Open the localhost URL displayed in your terminal to access the dashboard.
+
+### Step 5: Create Production Build
+
+```bash
+npm run build
+```
+
+The optimized production files will be generated inside the `dist/` directory.
+
+---
+
+## 11. Screenshots
+
+Screenshots of the actual application will be added here to showcase the dashboard interface and its major features.
 
 Suggested screenshots:
 
-| Screenshot | Description |
-|---|---|
-| Dashboard Overview | Main dashboard and current level |
-| Sidebar Navigation | Expanded and collapsed navigation |
-| Level Roadmap | Level progression interface |
-| Daily XP & Watch Ads | Earning activity section |
-| XP Catcher | Mini-game interface |
-| XP Activity | Recent XP history |
-| Level-Up Celebration | Level-up animation |
+- Dashboard Overview
+- Expanded and Collapsed Sidebar
+- Level Progression Roadmap
+- Daily XP and Watch Ads
+- XP Catcher Mini-Game
+- XP Activity History
+- Level-Up Celebration
 
-To add screenshots, create a `screenshots/` folder in the project root and reference the image files here.
+To add screenshots, create a `screenshots/` folder in the project root and place your application screenshots inside it.
 
 Example:
 
@@ -355,11 +405,11 @@ Example:
 
 ---
 
-## Current Development Progress
+## 12. Current Development Progress
 
 **Overall Completion: Approximately 70–80%**
 
-### Completed Work
+### Work Completed
 
 - Main dashboard structure.
 - Component-based React implementation.
@@ -372,6 +422,8 @@ Example:
 - XP activity history.
 - Level-up celebration interface.
 - Initial responsive styling.
+- GitHub repository setup.
+- Initial Vercel deployment.
 
 ### Currently Working On
 
@@ -385,7 +437,7 @@ The project is actively under development and is not yet considered fully comple
 
 ---
 
-## Demo Limitations
+## 13. Demo Limitations
 
 This is currently a frontend development implementation.
 
@@ -393,13 +445,13 @@ This is currently a frontend development implementation.
 - User authentication is not implemented.
 - XP and activity data are stored locally in the browser.
 - Reward values are for demonstration purposes only.
-- Watch Ads functionality does not play real advertisements.
+- Watch Ads functionality does not play actual advertisements.
 - No real-money transactions or actual reward transfers are supported.
 - LocalStorage data is not synchronized across devices.
 
 ---
 
-## Future Enhancements
+## 14. Future Enhancements
 
 The following improvements can be considered in future development:
 
@@ -410,21 +462,26 @@ The following improvements can be considered in future development:
 - Enhanced dashboard analytics.
 - Improved accessibility.
 - Further UI/UX optimization.
-- Production deployment and performance improvements.
+- Additional testing and performance improvements.
 
 ---
 
-## Version Control
+## 15. Deployment
+
+The application is deployed using Vercel and connected to the GitHub repository.
+
+**Live URL:**  
+https://v-eloop-rewards-dashboard.vercel.app/
+
+Future commits pushed to the connected GitHub branch can trigger automatic deployments through Vercel.
+
+---
+
+## 16. Version Control
 
 This project uses Git for version control and GitHub for source code management.
 
-Clone the repository:
-
-```bash
-git clone https://github.com/shobhit23012007/VEloop-rewards-dashboard.git
-```
-
-To contribute changes locally:
+To push future changes:
 
 ```bash
 git add .
@@ -444,14 +501,14 @@ GitHub: [@shobhit23012007](https://github.com/shobhit23012007)
 
 Project Repository: [VELOOP Rewards Dashboard](https://github.com/shobhit23012007/VEloop-rewards-dashboard)
 
+Live Demo: [Visit VELOOP Rewards](https://v-eloop-rewards-dashboard.vercel.app/)
+
 ---
 
 <p align="center">
-  <strong>VELOOP Rewards</strong>
-  <br/>
-  Play. Earn. Level Up.
-</p>
-
-<p align="center">
-  Developed as part of Task 16 – Complete Level-Up Dashboard Redesign.
+  <strong>VELOOP REWARDS</strong>
+  <br />
+  <em>Play. Earn. Level Up.</em>
+  <br /><br />
+  Developed as part of the VELOOP Rewards Frontend Development Task.
 </p>
